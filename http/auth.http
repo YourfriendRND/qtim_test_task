@@ -1,0 +1,38 @@
+### Пример регистрации пользователя
+
+POST http://localhost:5000/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Anton",
+    "password": "123qwe",
+    "email": "admin@test.ru"
+}
+
+### Пример логина
+POST http://localhost:5000/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "admin@test.ru",
+    "password": "123qwe"
+}
+
+### Пример логаута
+POST http://localhost:5000/auth/logout HTTP/1.1
+Content-Type: application/json
+Cookie: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzQ1ZjE2NC00MjYwLTRmMDctYWI3Ny02OGIzZDA3YWFiYWEiLCJzZXNzaW9uSWQiOiIyZGY1NDllOS00MjM2LTQxYTAtYWYyZi1jNzQzNmVmNGI0YmQiLCJpYXQiOjE3NTg5ODY1MTEsImV4cCI6MTc1OTA3MjkxMX0.kmHMpRpUqcNnyNI13Fbkyy4glBSXULO6Qxncw1NyE80
+
+
+### Пример рефреш токена
+POST http://localhost:5000/auth/refresh
+Content-Type: application/json
+Cookie: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzQ1ZjE2NC00MjYwLTRmMDctYWI3Ny02OGIzZDA3YWFiYWEiLCJzZXNzaW9uSWQiOiIyZGY1NDllOS00MjM2LTQxYTAtYWYyZi1jNzQzNmVmNGI0YmQiLCJpYXQiOjE3NTg5ODY1MTEsImV4cCI6MTc1OTI0NTcxMX0.80IK38Xv3GKOP_UbyF93c9hkwRPT3L0275QnSRWV4yU
+
+
+
+### Проверка текущего пользователя
+GET http://localhost:5000/auth/me
+Content-Type: application/json
+Cookie: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzQ1ZjE2NC00MjYwLTRmMDctYWI3Ny02OGIzZDA3YWFiYWEiLCJzZXNzaW9uSWQiOiIyZGY1NDllOS00MjM2LTQxYTAtYWYyZi1jNzQzNmVmNGI0YmQiLCJpYXQiOjE3NTg5ODY1MTEsImV4cCI6MTc1OTA3MjkxMX0.kmHMpRpUqcNnyNI13Fbkyy4glBSXULO6Qxncw1NyE80
+
