@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: qtim_db
+    image: postgres:15
+    shm_size: 128mb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DB: ${PG_DATABASE}
+    restart: always
+    ports:
+     - '${DB_PORT}:${DB_PORT}'
+    networks:
+      - qtim
+  
+  redis:
+    container_name: qtim_redis
+    image: redis:7.2-alpine
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis_data:/data
+    ports:
+      - '${REDIS_PORT}:${REDIS_PORT}'
+    restart: always
+    networks:
+      - qtim
+
+  app:
+    container_name: qtim_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - ${PORT}:${PORT}
+    command: sh -c "npm install && npm run migration:run && npm start"
+    networks:
+      - qtim
+    depends_on:
+      - db
+      - redis
+
+networks:
+    qtim:
+      driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:
+
+

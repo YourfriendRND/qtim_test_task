@@ -1,7 +1,7 @@
 import { Controller, Post, Body, HttpCode, HttpStatus, Res, Inject, Get } from '@nestjs/common';
 import * as dayjs from 'dayjs';
 import { CookieOptions, Response } from 'express';
-import { ApiOperation, ApiBody, ApiOkResponse, ApiConflictResponse, ApiUnauthorizedResponse } from '@nestjs/swagger';
+import { ApiOperation, ApiBody, ApiOkResponse, ApiConflictResponse, ApiUnauthorizedResponse, ApiTags } from '@nestjs/swagger';
 
 import { RegisterUserDto, LoginDTO } from './dto';
 import { UserRdo } from './rdo/user.rdo';
@@ -13,6 +13,7 @@ import jwtConfig from 'src/config/jwt.config';
 import { JWTGuard, UserRequest } from 'src/common/decorators';
 import { JwtStrategies } from 'src/common/enums';
 
+@ApiTags('Регистрация/авторизация пользователя')
 @Controller('auth')
 export class AuthController {
 

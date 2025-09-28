@@ -6,7 +6,8 @@ import {
     ApiOkResponse, 
     ApiOperation, 
     ApiParam, 
-    ApiQuery 
+    ApiQuery, 
+    ApiTags
 } from '@nestjs/swagger';
 import { 
     Controller, 
@@ -30,6 +31,7 @@ import { ArticleService } from './article.service';
 import { JwtStrategies } from 'src/common/enums';
 import { fillResponseDto } from 'src/common/utils';
 
+@ApiTags('Статьи')
 @Controller('/articles')
 export class ArticleController {
     constructor(

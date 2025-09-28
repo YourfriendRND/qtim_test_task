@@ -32,13 +32,12 @@ export class RedisConfig {
 }
 
 export default registerAs(ConfigNameSpaces.Redis, () => {
-    console.log(process.env.REDIS_TTL)
     const validationResult =  validateConfig(RedisConfig, {
-        host: process.env.REDIS_HOST || 'redis',
-        port: process.env.REDIS_PORT || '6379',
-        user: process.env.REDIS_USER,
-        password: process.env.REDIS_PASSWORD,
-        _humanizeTtl: process.env.REDIS_TTL || '1h'
+      host: process.env.REDIS_HOST || 'redis',
+      port: process.env.REDIS_PORT || '6379',
+      user: process.env.REDIS_USER,
+      password: process.env.REDIS_PASSWORD,
+      _humanizeTtl: process.env.REDIS_TTL || '1h'
     });
 
     validationResult.ttl = parseTimeToSeconds(validationResult._humanizeTtl);

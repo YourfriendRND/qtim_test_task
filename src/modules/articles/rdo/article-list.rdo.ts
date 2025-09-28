@@ -6,6 +6,7 @@ import { ArticleRdo } from './article.rdo';
 export class ArticleListRdo {
     @ApiProperty({
         description: 'Список статей',
+        type: [ArticleRdo]
     })
     @Expose()
     @Type(() => ArticleRdo)
