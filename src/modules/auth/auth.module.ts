@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 import { JwtAccessStrategy } from './strategies/jwt-access.strategy';
 import { SessionModule } from '../sessions/session.module';
 import { JwtRefreshStrategy } from './strategies/jwt-refresh.strategy';
+import { OptionalJwtStrategy } from './strategies/optional-jwt-access.strategy';
 
 
 @Module({
@@ -17,6 +18,7 @@ import { JwtRefreshStrategy } from './strategies/jwt-refresh.strategy';
         JwtService, 
         JwtAccessStrategy,
         JwtRefreshStrategy,
+        OptionalJwtStrategy,
     ],
     exports: [AuthService],
 })

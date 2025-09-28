@@ -104,7 +104,7 @@ export class AuthController {
         description: 'Пользователь неавторизован',
         example: 'Unauthorized'
     })
-    @JWTGuard(JwtStrategies.AccessStrategy)
+    @JWTGuard()
     @HttpCode(HttpStatus.OK)
     @Post('/logout')
     async logout(
@@ -193,7 +193,7 @@ export class AuthController {
         description: 'Пользователь неавторизован',
         example: 'Unauthorized'
     })
-    @JWTGuard(JwtStrategies.AccessStrategy)
+    @JWTGuard()
     @Get('/me')
     async getSessionUser(
         @UserRequest() user: IUserSession

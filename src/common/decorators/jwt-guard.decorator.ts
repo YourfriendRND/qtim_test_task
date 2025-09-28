@@ -3,5 +3,5 @@ import { AuthGuard } from '@nestjs/passport';
 
 import { JwtStrategies } from '../enums';
 
-export const JWTGuard = (guard: JwtStrategies) =>
+export const JWTGuard = (guard: JwtStrategies = JwtStrategies.AccessStrategy) =>
   applyDecorators(UseGuards(AuthGuard(guard)));

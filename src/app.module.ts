@@ -8,12 +8,15 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/users/user.module';
 import jwtConfig from './config/jwt.config';
 import { SessionModule } from './modules/sessions/session.module';
+import { ArticleModule } from './modules/articles/article.module';
+import redisConfig from './config/redis.config';
+import { CacheModule } from './modules/cache/cache.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [dbConfig, commonConfig, jwtConfig],
+      load: [dbConfig, commonConfig, jwtConfig, redisConfig],
       envFilePath: './.env',
     }),
     TypeOrmModule.forRootAsync({
@@ -34,7 +37,9 @@ import { SessionModule } from './modules/sessions/session.module';
     }),
     AuthModule,
     UserModule,
-    SessionModule
+    SessionModule,
+    ArticleModule,
+    CacheModule
   ],
   controllers: [],
   providers: [ConfigService],

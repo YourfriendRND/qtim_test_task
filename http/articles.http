@@ -1,0 +1,35 @@
+@USER_1 = access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzQ1ZjE2NC00MjYwLTRmMDctYWI3Ny02OGIzZDA3YWFiYWEiLCJzZXNzaW9uSWQiOiIxYTU4MDc4NS01MWI3LTRiMmYtYWNmOS01MTQ1YWJkOTk0M2UiLCJpYXQiOjE3NTkwNzgyNjgsImV4cCI6MTc1OTE2NDY2OH0.aCrhldKHgusATe6ZxLkjoPBJZTk6I5wb_Ul76ky8OTY
+
+POST http://localhost:5000/articles HTTP/1.1
+Content-Type: application/json
+Cookie: {{USER_1}}
+
+{
+    "name": "Черновик 2",
+    "status": "Draft"
+}
+
+####
+PATCH http://localhost:5000/articles/06089cad-b356-4e57-91a5-00c8ae306d35 HTTP/1.1
+Content-Type: application/json
+Cookie: {{USER_1}}
+
+{
+    "status": "Published",
+    "description": "Статейка в газетенку"
+}
+
+####
+GET http://localhost:5000/articles/9de35026-f22f-4167-97ec-ae8ddec8ea00 HTTP/1.1
+Content-Type: application/json
+
+###
+GET http://localhost:5000/articles HTTP/1.1
+Content-Type: application/json
+Cookie: {{USER_1}}
+
+###
+DELETE http://localhost:5000/articles/34258693-191d-4a1e-a731-49165ecf3bea
+Content-Type: application/json
+Cookie: {{USER_1}}
+
